@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cantinho Verde | Plantas e vasos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============ AVISO SUPERIOR ============ -->
+<div class="cv-aviso text-center">Frete grátis em compras acima de R$ 150,00</div>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-md cv-navbar sticky-top">
+  <div class="container-fluid px-3 px-lg-5">
+    <a class="navbar-brand" href="#">🌿 Cantinho Verde</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-label="Abrir menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menuPrincipal">
+      <ul class="navbar-nav nav nav-pills w-100 align-items-md-center" role="tablist">
+        <!-- Lado esquerdo -->
+        <li class="nav-item ms-md-4">
+          <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#aba-painel" type="button" role="tab">Painel de produtos</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#aba-sugestao" type="button" role="tab">Sugestões</button>
+        </li>
+        <!-- Lado direito -->
+        <li class="nav-item ms-md-auto">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#aba-usuario" type="button" role="tab">👤 Minha conta</button>
+        </li>
+        <li class="nav-item ms-md-2 mt-2 mt-md-0">
+          <button class="btn btn-cv" type="button" data-bs-toggle="offcanvas" data-bs-target="#painelCarrinho">
+            🛒 Carrinho
+            <span id="contadorCarrinho" class="badge rounded-pill cv-badge">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="container-fluid px-3 px-lg-5 py-4">
+  <div class="tab-content">
+
+    <!-- ============ ABA: SUGESTÃO ============ -->
+<section class="tab-pane fade" id="aba-sugestao" role="tabpanel">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="cv-painel">
+        <h2 class="h3">Sugira uma planta</h2>
+        <p>Não achou a planta que procurava? Conte para nós.</p>
+
+        <form id="formSugestao" novalidate>
+          <div class="mb-3">
+            <label for="sugNome" class="form-label">Nome</label>
+            <input type="text" id="sugNome" class="form-control" placeholder="Seu nome completo">
+            <div class="invalid-feedback">Informe nome e sobrenome, só com letras.</div>
+          </div>
+          <div class="mb-3">
+            <label for="sugEmail" class="form-label">E-mail</label>
+            <input type="email" id="sugEmail" class="form-control" placeholder="voce@exemplo.com">
+            <div class="invalid-feedback">Digite um e-mail válido, como nome@dominio.com.</div>
+          </div>
+          <div class="mb-3">
+            <label for="sugProduto" class="form-label">Planta sugerida</label>
+            <input type="text" id="sugProduto" class="form-control" placeholder="Ex.: Jiboia, Hortelã, Bonsai">
+            <div class="invalid-feedback">Informe o nome da planta (mínimo 3 letras).</div>
+          </div>
+          <div class="mb-3">
+            <label for="sugMensagem" class="form-label">Mensagem</label>
+            <textarea id="sugMensagem" class="form-control" rows="3" placeholder="Por que essa planta seria uma boa adição à loja?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-cv">Enviar sugestão</button>
+        </form>
+
+        <div id="retornoSugestao" class="alert d-none mt-3" role="status"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- ============ ABA: PAINEL DE PRODUTOS ============ -->
+    <section class="tab-pane fade show active" id="aba-painel" role="tabpanel">
+
+      <header class="cv-hero mb-4">
+        <h1>Plantas para dar vida à sua casa</h1>
+        <p>Folhagens, suculentas, flores e vasos, enviados com embalagem protegida.</p>
+      </header>
+
+      <!-- Vantagens da loja -->
+      <div class="row g-3 mb-4 cv-vantagens">
+        <div class="col-6 col-lg-3"><div class="cv-vantagem"><span>📦</span> Embalagem protegida</div></div>
+        <div class="col-6 col-lg-3"><div class="cv-vantagem"><span>🌱</span> Mudas saudáveis</div></div>
+        <div class="col-6 col-lg-3"><div class="cv-vantagem"><span>🔁</span> Troca em até 7 dias</div></div>
+        <div class="col-6 col-lg-3"><div class="cv-vantagem"><span>💬</span> Dicas de cuidado</div></div>
+      </div>
+
+      <!-- Busca e filtro -->
+      <div class="row g-2 mb-4 cv-filtros">
+        <div class="col-md-8">
+          <label for="busca" class="visually-hidden">Buscar planta</label>
+          <input type="search" id="busca" class="form-control" placeholder="Buscar planta ou vaso pelo nome">
+        </div>
+        <div class="col-md-4">
+          <label for="categoria" class="visually-hidden">Categoria</label>
+          <select id="categoria" class="form-select">
+            <option value="">Todas as categorias</option>
+            <!-- Ex.: Folhagens, Suculentas, Flores, Frutíferas, Vasos (criadas via JS) -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Spinner -->
+      <div id="spinner" class="text-center py-5 d-none">
+        <div class="spinner-border cv-spinner" role="status"></div>
+        <p class="mt-2 mb-0">Carregando plantas...</p>
+      </div>
+
+      <!-- Erro -->
+      <div id="alertaErro" class="alert alert-danger d-none" role="alert">
+        Não foi possível carregar os produtos. Verifique sua conexão e tente novamente.
+      </div>
+
+      <!-- Sem resultados -->
+      <p id="semResultados" class="text-center cv-vazio d-none">Nenhuma planta encontrada para essa busca.</p>
+
+      <!-- Lista de produtos (um card por linha) -->
+      <div id="listaProdutos" class="d-flex flex-column gap-3">
+
+        <!-- Exemplo estático: apague quando o JS gerar os cards -->
+        <article class="card cv-produto">
+          <div class="row g-0 align-items-center">
+            <div class="col-auto"><div class="cv-produto-img">🪴</div></div>
+            <div class="col">
+              <div class="card-body">
+                <span class="badge cv-cat">Folhagens</span>
+                <h2 class="card-title h5 mb-1">Costela-de-adão</h2>
+                <p class="card-text mb-2">Folhas grandes e recortadas, ótima para ambientes internos.</p>
+                <div class="cv-cuidados">
+                  <span>☀️ Luz difusa</span>
+                  <span>💧 Rega semanal</span>
+                  <span>📏 Vaso 21 cm</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-auto cv-produto-acoes">
+              <p class="cv-preco mb-2">R$ 89,90</p>
+              <div class="d-flex gap-2">
+                <button class="btn btn-cv-outline btn-sm btn-detalhes" data-id="1">Detalhes</button>
+                <button class="btn btn-cv btn-sm btn-adicionar" data-id="1" data-nome="Costela-de-adão" data-preco="89.90">Adicionar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Molde para o JS clonar (opcional) -->
+      <template id="tplProduto">
+        <article class="card cv-produto">
+          <div class="row g-0 align-items-center">
+           <div class="cv-produto-img">
+            <img src="img/costela-remotebg-preview.png" alt="Costela-de-adão em vaso">
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <span class="badge cv-cat"></span>
+                <h2 class="card-title h5 mb-1"></h2>
+                <p class="card-text mb-2"></p>
+                <div class="cv-cuidados"></div>
+              </div>
+            </div>
+            <div class="col-12 col-md-auto cv-produto-acoes">
+              <p class="cv-preco mb-2"></p>
+              <div class="d-flex gap-2">
+                <button class="btn btn-cv-outline btn-sm btn-detalhes">Detalhes</button>
+                <button class="btn btn-cv btn-sm btn-adicionar">Adicionar</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </template>
+    </section>
+
+    <!-- ============ ABA: MINHA CONTA ============ -->
+    <section class="tab-pane fade" id="aba-usuario" role="tabpanel">
+      <div class="row g-4">
+
+        <div class="col-lg-4">
+          <div class="cv-painel text-center">
+            <div class="cv-avatar mx-auto mb-3">MS</div>
+            <h2 class="h4 mb-0">Maria Souza</h2>
+            <p class="mb-3">maria.souza@exemplo.com</p>
+            <span class="badge cv-cat">Cliente desde 2024</span>
+            <hr class="cv-hr">
+            <div class="d-flex justify-content-around">
+              <div><strong class="cv-preco">12</strong><br><small>plantas compradas</small></div>
+              <div><strong class="cv-preco">3</strong><br><small>pedidos</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="cv-painel mb-4">
+            <h2 class="h4">Meus dados</h2>
+            <form id="formUsuario" class="row g-3">
+              <div class="col-md-6">
+                <label for="usuNome" class="form-label">Nome</label>
+                <input type="text" id="usuNome" class="form-control" value="Maria Souza">
+              </div>
+              <div class="col-md-6">
+                <label for="usuEmail" class="form-label">E-mail</label>
+                <input type="email" id="usuEmail" class="form-control" value="maria.souza@exemplo.com">
+              </div>
+              <div class="col-md-6">
+                <label for="usuTel" class="form-label">Telefone</label>
+                <input type="tel" id="usuTel" class="form-control" placeholder="(86) 99999-9999">
+              </div>
+              <div class="col-md-6">
+                <label for="usuCidade" class="form-label">Cidade</label>
+                <input type="text" id="usuCidade" class="form-control" value="Teresina">
+              </div>
+              <div class="col-12">
+                <label for="usuEndereco" class="form-label">Endereço de entrega</label>
+                <input type="text" id="usuEndereco" class="form-control" placeholder="Rua, número, bairro">
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-cv">Salvar dados</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="cv-painel">
+            <h2 class="h4">Meus pedidos</h2>
+            <div class="table-responsive">
+              <table class="table cv-tabela align-middle mb-0">
+                <thead>
+                  <tr><th>Pedido</th><th>Data</th><th>Itens</th><th>Total</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>#1042</td><td>02/10/2026</td><td>Suculenta, vaso de barro</td><td>R$ 38,90</td><td><span class="badge cv-cat">Entregue</span></td></tr>
+                  <tr><td>#1051</td><td>09/10/2026</td><td>Costela-de-adão</td><td>R$ 89,90</td><td><span class="badge cv-cat">A caminho</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="cv-footer text-center py-4">
+  <small>Cantinho Verde · Plantas e vasos</small>
+</footer>
+
+<!-- ============ CARRINHO (offcanvas) ============ -->
+<div class="offcanvas offcanvas-end cv-offcanvas" tabindex="-1" id="painelCarrinho" aria-labelledby="tituloCarrinho">
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title h4" id="tituloCarrinho">Seu carrinho</h2>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+
+    <!-- Progresso do frete grátis -->
+    <div class="cv-frete mb-3">
+      <small id="textoFrete">Faltam R$ 150,00 para o frete grátis</small>
+      <div class="progress" role="progressbar" aria-label="Progresso do frete grátis" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div id="barraFrete" class="progress-bar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <p id="carrinhoVazio" class="cv-vazio">Seu carrinho está vazio. Escolha uma planta no painel.</p>
+
+    <ul id="listaCarrinho" class="list-unstyled flex-grow-1">
+      <!-- Exemplo de item: o JS pode gerar linhas assim -->
+      <li class="cv-item-carrinho">
+        <div class="cv-item-icone">🪴</div>
+        <div class="flex-grow-1">
+          <strong>Costela-de-adão</strong><br>
+          <small>2 × R$ 89,90</small>
+        </div>
+        <div class="text-end">
+          <span class="cv-preco">R$ 179,80</span><br>
+          <button class="btn btn-link btn-sm p-0 btn-remover" data-id="1">Remover</button>
+        </div>
+      </li>
+    </ul>
+
+    <div class="cv-total">
+      <span>Total</span>
+      <strong id="totalCarrinho">R$ 0,00</strong>
+    </div>
+    <div class="d-grid gap-2 mt-3">
+      <button id="btnFinalizar" class="btn btn-cv">Finalizar pedido</button>
+      <button id="btnLimpar" class="btn btn-cv-outline">Esvaziar carrinho</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MODAL DE DETALHES ============ -->
+<div class="modal fade cv-modal" id="modalProduto" tabindex="-1" aria-labelledby="modalTitulo" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h4" id="modalTitulo">Planta</h2>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="cv-produto-img cv-produto-img-lg mx-auto" id="modalImagem">🪴</div>
+        <span class="badge cv-cat" id="modalCategoria">Categoria</span>
+        <p class="mt-2" id="modalDescricao">Descrição da planta.</p>
+        <div class="cv-cuidados justify-content-center mb-3" id="modalCuidados">
+          <span>☀️ Luz difusa</span>
+          <span>💧 Rega semanal</span>
+          <span>🐾 Tóxica para pets</span>
+        </div>
+        <p class="cv-preco h4 mb-0" id="modalPreco">R$ 0,00</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-cv-outline" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-cv" id="modalAdicionar">Adicionar ao carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

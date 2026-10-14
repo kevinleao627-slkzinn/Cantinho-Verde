@@ -1,0 +1,299 @@
+/* ===== Cantinho Verde: tema verde escuro ===== */
+/* ===== Cantinho Verde: loja de plantas, tema verde escuro ===== */
+:root {
+  --cv-fundo: #0a1a12;
+  --cv-superficie: #12281c;
+  --cv-superficie-2: #1a3726;
+  --cv-borda: #2a4d38;
+  --cv-texto: #e4f0e7;
+  --cv-texto-suave: #9bb8a5;
+  --cv-destaque: #8fd694;
+  --cv-destaque-escuro: #5fb86a;
+  --cv-preco: #f2d98b;
+}
+
+body {
+  background: var(--cv-fundo);
+  color: var(--cv-texto);
+  font-family: "Nunito Sans", system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+h1, h2, h3, .navbar-brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+p, small, .form-label { color: var(--cv-texto-suave); }
+
+a:focus-visible, button:focus-visible, .form-control:focus-visible {
+  outline: 2px solid var(--cv-destaque);
+  outline-offset: 2px;
+}
+
+/* ----- Aviso superior ----- */
+.cv-aviso {
+  background: var(--cv-destaque);
+  color: #0a1a12;
+  font-weight: 700;
+  font-size: .9rem;
+  padding: .35rem 1rem;
+}
+
+/* ----- Navbar: marca à esquerda, conta e carrinho à direita ----- */
+.cv-navbar {
+  background: var(--cv-superficie);
+  border-bottom: 1px solid var(--cv-borda);
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+.cv-navbar .navbar-brand {
+  color: var(--cv-destaque);
+  font-size: 1.5rem;
+  margin-right: 0;
+}
+.cv-navbar .navbar-toggler { border-color: var(--cv-borda); filter: invert(1); }
+.cv-navbar .nav-link {
+  color: var(--cv-texto-suave);
+  background: var(--cv-superficie-2);
+  border: 1px solid var(--cv-borda);
+  border-radius: 8px;
+  font-weight: 600;
+  margin-right: .5rem;
+}
+.cv-navbar .nav-link:hover {
+  color: var(--cv-texto);
+  border-color: var(--cv-destaque);
+}
+.cv-navbar .nav-link.active {
+  background: var(--cv-superficie-2);
+  color: var(--cv-destaque);
+  border-color: var(--cv-destaque);
+}
+.cv-badge {
+  background: #0a1a12;
+  color: var(--cv-destaque);
+  margin-left: .25rem;
+}
+
+/* ----- Botões ----- */
+.btn-cv {
+  background: var(--cv-destaque);
+  border: 1px solid var(--cv-destaque);
+  color: #0a1a12;
+  font-weight: 700;
+}
+.btn-cv:hover, .btn-cv:focus {
+  background: var(--cv-destaque-escuro);
+  border-color: var(--cv-destaque-escuro);
+  color: #0a1a12;
+}
+.btn-cv-outline {
+  background: transparent;
+  border: 1px solid var(--cv-borda);
+  color: var(--cv-texto);
+}
+.btn-cv-outline:hover, .btn-cv-outline:focus {
+  background: var(--cv-superficie-2);
+  border-color: var(--cv-destaque);
+  color: var(--cv-destaque);
+}
+
+/* ----- Hero ----- */
+.cv-hero {
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 92% 30%, rgba(143, 214, 148, .2), transparent 42%),
+    var(--cv-superficie);
+  border: 1px solid var(--cv-borda);
+}
+.cv-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: .35rem; max-width: 22ch; }
+.cv-hero p { margin: 0; font-size: 1.1rem; }
+
+/* ----- Vantagens ----- */
+.cv-vantagem {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  height: 100%;
+  padding: .75rem 1rem;
+  background: var(--cv-superficie);
+  border: 1px solid var(--cv-borda);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.cv-vantagem span { font-size: 1.4rem; }
+
+/* ----- Filtros / formulários ----- */
+.form-control, .form-select {
+  background-color: var(--cv-superficie);
+  border: 1px solid var(--cv-borda);
+  color: var(--cv-texto);
+}
+.form-control::placeholder { color: #6f8f7b; }
+.form-control:focus, .form-select:focus {
+  background-color: var(--cv-superficie);
+  color: var(--cv-texto);
+  border-color: var(--cv-destaque);
+  box-shadow: 0 0 0 .2rem rgba(143, 214, 148, .2);
+}
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%238fd694' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+.form-control.is-invalid { border-color: #e88a8a; }
+.form-control.is-valid { border-color: var(--cv-destaque); }
+.invalid-feedback { color: #f0a3a3; }
+
+/* ----- Produtos na horizontal ----- */
+.cv-produto {
+  background: var(--cv-superficie);
+  border: 1px solid var(--cv-borda);
+  border-radius: 14px;
+  color: var(--cv-texto);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+.cv-produto:hover { border-color: var(--cv-destaque); }
+.cv-produto .card-title { color: var(--cv-texto); }
+
+.cv-produto-img {
+  width: 130px;
+  height: 130px;
+  margin: 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 3.6rem;
+  background: var(--cv-superficie-2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cv-produto-img img { width: 100%; height: 100%; object-fit: cover; }
+.cv-produto-img-lg { width: 150px; height: 150px; font-size: 4.5rem; margin: 0 auto 1rem; }
+
+.cv-produto-acoes { padding: 1rem 1.5rem; text-align: right; }
+.cv-produto-acoes .d-flex { justify-content: flex-end; }
+
+.cv-preco {
+  color: var(--cv-preco);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.cv-cat {
+  background: var(--cv-superficie-2);
+  color: var(--cv-destaque);
+  border: 1px solid var(--cv-borda);
+  font-weight: 600;
+  margin-bottom: .4rem;
+}
+
+/* Cuidados da planta (luz, rega, tamanho) */
+.cv-cuidados { display: flex; flex-wrap: wrap; gap: .4rem; }
+.cv-cuidados span {
+  background: var(--cv-superficie-2);
+  border-radius: 999px;
+  padding: .15rem .65rem;
+  font-size: .8rem;
+  color: var(--cv-texto-suave);
+}
+
+/* ----- Painéis (conta) ----- */
+.cv-painel {
+  background: var(--cv-superficie);
+  border: 1px solid var(--cv-borda);
+  border-radius: 16px;
+  padding: 1.75rem;
+}
+.cv-hr { border-color: var(--cv-borda); opacity: 1; margin: 1.25rem 0; }
+.cv-avatar {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cv-destaque);
+  color: #0a1a12;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.cv-tabela { --bs-table-bg: transparent; --bs-table-color: var(--cv-texto); --bs-table-border-color: var(--cv-borda); }
+.cv-tabela th { color: var(--cv-texto-suave); font-weight: 600; }
+
+/* ----- Estados ----- */
+.cv-spinner { color: var(--cv-destaque); width: 3rem; height: 3rem; }
+.cv-vazio { text-align: center; padding: 2rem 0; }
+.alert-danger { background: #3a1d1d; border-color: #7a3a3a; color: #f4c4c4; }
+.alert-success { background: #1a3726; border-color: var(--cv-destaque-escuro); color: var(--cv-destaque); }
+
+/* ----- Carrinho ----- */
+.cv-offcanvas {
+  background: var(--cv-superficie);
+  color: var(--cv-texto);
+  border-left: 1px solid var(--cv-borda);
+}
+.cv-frete .progress { background: var(--cv-superficie-2); height: 8px; margin-top: .35rem; }
+.cv-frete .progress-bar { background: var(--cv-destaque); }
+
+.cv-item-carrinho {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--cv-borda);
+}
+.cv-item-icone {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  background: var(--cv-superficie-2);
+  border-radius: 10px;
+}
+.cv-item-carrinho .cv-preco { font-size: 1.05rem; }
+.cv-item-carrinho .btn-link { color: #f0a3a3; }
+.cv-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cv-borda);
+  font-size: 1.2rem;
+}
+.cv-total strong { color: var(--cv-preco); font-family: "Fraunces", Georgia, serif; font-size: 1.5rem; }
+
+/* ----- Modal ----- */
+.cv-modal .modal-content {
+  background: var(--cv-superficie);
+  color: var(--cv-texto);
+  border: 1px solid var(--cv-borda);
+  border-radius: 16px;
+}
+.cv-modal .modal-header, .cv-modal .modal-footer { border-color: var(--cv-borda); }
+.cv-modal .modal-body { text-align: center; }
+
+/* ----- Rodapé ----- */
+.cv-footer { border-top: 1px solid var(--cv-borda); margin-top: 2rem; }
+
+/* ----- Celular ----- */
+@media (max-width: 767.98px) {
+  .cv-produto-img { width: 88px; height: 88px; font-size: 2.4rem; margin: .75rem; }
+  .cv-produto-acoes {
+    text-align: left;
+    border-top: 1px solid var(--cv-borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cv-produto-acoes .cv-preco { margin: 0 !important; }
+  .cv-navbar .nav-item { margin-top: .25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
