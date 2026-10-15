@@ -1,5 +1,3 @@
-/* ===== Cantinho Verde: tema verde escuro ===== */
-/* ===== Cantinho Verde: loja de plantas, tema verde escuro ===== */
 :root {
   --cv-fundo: #0a1a12;
   --cv-superficie: #12281c;
@@ -254,6 +252,13 @@ a:focus-visible, button:focus-visible, .form-control:focus-visible {
   font-size: 1.6rem;
   background: var(--cv-superficie-2);
   border-radius: 10px;
+}
+.cv-item-icone { overflow: hidden; flex-shrink: 0; }
+.cv-item-icone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .cv-item-carrinho .cv-preco { font-size: 1.05rem; }
 .cv-item-carrinho .btn-link { color: #f0a3a3; }
